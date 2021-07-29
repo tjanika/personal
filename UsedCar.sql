@@ -3,7 +3,7 @@ Ezt a Scriptet Toth Janos irta
 
 FIGYELEM FONTOS INFORMACIOK:
 
-Add meg hol vannak a csv file:  ugorj a XXX-XXX.sorra
+Add meg hol vannak a csv file:  ugorj a 920.sorra
 A masteren allva kell elinditani
 Az agent-nek futni kell a jobok mukodesehez.
 
