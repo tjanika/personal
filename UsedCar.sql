@@ -1301,3 +1301,5 @@ GRANT EXECUTE ON [dbo].[Search] TO gjozsef
 GRANT EXECUTE ON [dbo].[Search] TO fdavid
 GRANT EXECUTE ON [dbo].[Search] TO klipot
 GRANT EXECUTE ON [dbo].[Search] TO bignac
+
+CREATE UNIQUE NONCLUSTERED INDEX AK_VAT_VATValueFrom ON dbo.VAT (VATValue,[FROM])
