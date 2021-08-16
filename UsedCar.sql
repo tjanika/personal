@@ -7,7 +7,7 @@ Add meg hol vannak a csv file:  ugorj a 920.sorra
 A masteren allva kell elinditani
 Az agent-nek futni kell a jobok mukodesehez.
 
-
+A Log es a PostCode tablan szandekoson nincsenek idegen kulcsok.
 
 
 
@@ -362,7 +362,7 @@ CONSTRAINT FK_CarModel_CarBrand_CarMarkaID FOREIGN KEY (CarBrandID) REFERENCES C
 create table  Employee(
 EmployeeID int Not null identity(1,1),
 FullName varchar(50) NOT NULL,
-Post varchar(10) NOT NULL CHECK (Post IN ('Sz·ml·z·s', 'EladÛ', 'Igazgato')),
+Post varchar(10) NOT NULL CHECK (Post IN ('Sz√°ml√°z√°s', 'Elad√≥', 'Igazgato')),
 Payment int NOT NULL,
 LoginName varchar(20) NOT NULL,
 CONSTRAINT PK_Employee_EmployeeID  PRIMARY KEY (EmployeeID )
@@ -476,11 +476,11 @@ CONSTRAINT CK_VATIDCheck  CHECK  (dbo.VATIDCheck(VATID) = 'True')
 
 COMMIT TRAN
 	
-insert [Log] (TableName,[Action],[status], [Description]) values ('NONE','CREATE TABLE',1,'Sikerult felvenni a t·bl·kat')
+insert [Log] (TableName,[Action],[status], [Description]) values ('NONE','CREATE TABLE',1,'Sikerult felvenni a t√°bl√°kat')
 END TRY
 	BEGIN CATCH
 	ROLLBACK TRAN
-insert [Log] (TableName,[Action],[status], [Description]) values ('NONE','CREATE TABLE',0,'Nem sikerult felvenni a t·bl·kat')
+insert [Log] (TableName,[Action],[status], [Description]) values ('NONE','CREATE TABLE',0,'Nem sikerult felvenni a t√°bl√°kat')
 	END CATCH
 
 
@@ -721,64 +721,64 @@ SET NOCOUNT ON
 set @command1 ='BULK INSERT PostCode FROM ''' + @Directory +'PostCode.csv'' WITH (CODEPAGE = 1250,FIELDTERMINATOR = '','', ROWTERMINATOR = ''\n''   )' 
 	BEGIN TRY
 	exec (@command1) 
-insert [Log] (TableName,[Action],[status], [Description]) values ('PostCode','BULK INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('PostCode','BULK INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 	BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('PostCode','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('PostCode','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 	END CATCH
 
 set @command2 ='BULK INSERT CarModel FROM ''' + @Directory +'CarModel.csv'' WITH (CODEPAGE = 1250,FIELDTERMINATOR = '','', ROWTERMINATOR = ''\n''   )' 
 	BEGIN TRY
 	exec (@command2) 
-insert [Log] (TableName,[Action],[status], [Description]) values ('CarModel','BULK INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('CarModel','BULK INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 	BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('CarModel','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('CarModel','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 	END CATCH
 
 set @command3 ='BULK INSERT Client FROM ''' + @Directory +'Client.csv'' WITH (CODEPAGE = 1250,FIELDTERMINATOR = '','', ROWTERMINATOR = ''\n''   )' 
 	BEGIN TRY
 	exec (@command3) 
-insert [Log] (TableName,[Action],[status], [Description]) values ('Client','BULK INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Client','BULK INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 	BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('Client','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Client','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 	END CATCH
 
 set @command4 ='BULK INSERT Car FROM ''' + @Directory +'Car.csv'' WITH (CODEPAGE = 1250,FIELDTERMINATOR = '','', ROWTERMINATOR = ''\n''   )' 
 	BEGIN TRY
 	exec (@command4) 
-insert [Log] (TableName,[Action],[status], [Description]) values ('Car','BULK INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Car','BULK INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 	BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('Car','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Car','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 	END CATCH
 
 set @command5 ='BULK INSERT Invoice FROM ''' + @Directory +'Invoice.csv'' WITH (CODEPAGE = 1250,FIELDTERMINATOR = '','', ROWTERMINATOR = ''\n''   )' 
 	BEGIN TRY
 	exec (@command5) 
-insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','BULK INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','BULK INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 	BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 	END CATCH
 
 set @command6 ='BULK INSERT InvoiceDetail FROM ''' + @Directory +'InvoiceDetail.csv'' WITH (CODEPAGE = 1250,FIELDTERMINATOR = '','', ROWTERMINATOR = ''\n''   )' 
 	BEGIN TRY
 	exec (@command6) 
-insert [Log] (TableName,[Action],[status], [Description]) values ('InvoiceDetail','BULK INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('InvoiceDetail','BULK INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 	BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('InvoiceDetail','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('InvoiceDetail','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 	END CATCH
 
 set @command7 ='BULK INSERT CarDetail FROM ''' + @Directory +'CarDetail.csv'' WITH (CODEPAGE = 1250,FIELDTERMINATOR = '','', ROWTERMINATOR = ''\n''   )' 
 	BEGIN TRY
 	exec (@command7) 
-insert [Log] (TableName,[Action],[status], [Description]) values ('CarDetail','BULK INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('CarDetail','BULK INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 	BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('CarDetail','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('CarDetail','BULK INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 	END CATCH
 
 BEGIN TRY
@@ -838,33 +838,33 @@ INSERT INTO CarBrand (Brand) VALUES ('Toyota')
 INSERT INTO CarBrand (Brand) VALUES ('Volkswagen')
 INSERT INTO CarBrand (Brand) VALUES ('Volvo')
 COMMIT TRAN
-insert [Log] (TableName,[Action],[status], [Description]) values ('CarBrand','INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('CarBrand','INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 BEGIN CATCH
 ROLLBACK TRAN 
-insert [Log] (TableName,[Action],[status], [Description]) values ('CarBrand','INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('CarBrand','INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 END CATCH
 BEGIN TRY
-INSERT INTO DictStat (Stat) VALUES ('¡r')
-INSERT INTO DictStat (Stat) VALUES ('AkciÛ')
-INSERT INTO DictStat (Stat) VALUES ('Rekl·m')
-INSERT INTO DictStat (Stat) VALUES ('M·rkah˚sÈg')
-INSERT INTO DictStat (Stat) VALUES ('EgyÈb')
-insert [Log] (TableName,[Action],[status], [Description]) values ('DictStat','INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+INSERT INTO DictStat (Stat) VALUES ('√År')
+INSERT INTO DictStat (Stat) VALUES ('Akci√≥')
+INSERT INTO DictStat (Stat) VALUES ('Rekl√°m')
+INSERT INTO DictStat (Stat) VALUES ('M√°rkah√ªs√©g')
+INSERT INTO DictStat (Stat) VALUES ('Egy√©b')
+insert [Log] (TableName,[Action],[status], [Description]) values ('DictStat','INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('DictStat','INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('DictStat','INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 END CATCH
 BEGIN TRY
-INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (1,'KÈszpÈnz')
-INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (2,'Bank·rtya')
-INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (3,'¡tutal·s')
+INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (1,'K√©szp√©nz')
+INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (2,'Bank√°rtya')
+INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (3,'√Åtutal√°s')
 INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (4,'Hitel')
-INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (5,'EgyÈb')
-insert [Log] (TableName,[Action],[status], [Description]) values ('DictPaymentMode','INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+INSERT INTO DictPaymentMode (DictPaymentModeID,DictPaymentMode) VALUES (5,'Egy√©b')
+insert [Log] (TableName,[Action],[status], [Description]) values ('DictPaymentMode','INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('DictPaymentMode','INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('DictPaymentMode','INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 END CATCH
 BEGIN TRY
 INSERT INTO VAT (VATValue,[from],[to]) VALUES (25,'19950101','20051231')
@@ -876,34 +876,34 @@ INSERT INTO VAT (VATValue,[from],[to]) VALUES (0,'19950101','20031231')
 INSERT INTO VAT (VATValue,[from],[to]) VALUES (12,'19950101','20031231')
 INSERT INTO VAT (VATValue,[from],[to]) VALUES (15,'20040101','20090630')
 INSERT INTO VAT (VATValue,[from],[to]) VALUES (18,'20090701','99991231')
-insert [Log] (TableName,[Action],[status], [Description]) values ('VAT','INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('VAT','INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 BEGIN CATCH
-insert [Log] (TableName,[Action],[status], [Description]) values ('VAT','INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('VAT','INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 END CATCH
 BEGIN TRY
 BEGIN TRAN
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Szegv·ri Andor','Igazgato',1500000,'szandor')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('KÛsa M·ria','Sz·ml·z·s',300000,'kmaria')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Deutsch AntalnÈ','Sz·ml·z·s',300000,'dantalne')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Sch¸tz Julcsa','Sz·ml·z·s',300000,'sjulcsa')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Baracs MarcellnÈ','Sz·ml·z·s',300000,'bmarcellne')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Valerius D·vid','EladÛ',300000,'vdavid')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Zwebner ¡brah·m','EladÛ',300000,'zabraham')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Fuchs D·vid Rafael','EladÛ',300000,'fdrafael')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Sch¸ck Salamon','EladÛ',300000,'ssalamon')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('KrÛn BÈla','EladÛ',300000,'kbela')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Nagy JÛzsef','EladÛ',300000,'njozsef')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('G·bor JÛzsef','EladÛ',300000,'gjozsef')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Fischer D·vid','EladÛ',300000,'fdavid')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Kronberger LipÛt','EladÛ',300000,'klipot')
-INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Br¸ll Ign·c','EladÛ',300000,'bignac')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Szegv√°ri Andor','Igazgato',1500000,'szandor')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('K√≥sa M√°ria','Sz√°ml√°z√°s',300000,'kmaria')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Deutsch Antaln√©','Sz√°ml√°z√°s',300000,'dantalne')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Sch√ºtz Julcsa','Sz√°ml√°z√°s',300000,'sjulcsa')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Baracs Marcelln√©','Sz√°ml√°z√°s',300000,'bmarcellne')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Valerius D√°vid','Elad√≥',300000,'vdavid')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Zwebner √Åbrah√°m','Elad√≥',300000,'zabraham')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Fuchs D√°vid Rafael','Elad√≥',300000,'fdrafael')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Sch√ºck Salamon','Elad√≥',300000,'ssalamon')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Kr√≥n B√©la','Elad√≥',300000,'kbela')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Nagy J√≥zsef','Elad√≥',300000,'njozsef')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('G√°bor J√≥zsef','Elad√≥',300000,'gjozsef')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Fischer D√°vid','Elad√≥',300000,'fdavid')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Kronberger Lip√≥t','Elad√≥',300000,'klipot')
+INSERT INTO Employee (FullName,Post,Payment,LoginName) VALUES ('Br√ºll Ign√°c','Elad√≥',300000,'bignac')
 COMMIT TRAN
-insert [Log] (TableName,[Action],[status], [Description]) values ('Employee','INSERT',1,'Sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Employee','INSERT',1,'Sikerult betolteni az adatokat a t√°bl√°ba')
 END TRY
 BEGIN CATCH
 ROLLBACK TRAN 
-insert [Log] (TableName,[Action],[status], [Description]) values ('Employee','INSERT',0,'Nem sikerult betolteni az adatokat a t·bl·ba')
+insert [Log] (TableName,[Action],[status], [Description]) values ('Employee','INSERT',0,'Nem sikerult betolteni az adatokat a t√°bl√°ba')
 END CATCH
 end
 
@@ -936,7 +936,7 @@ View -k letrehozasa
 
 go
 CREATE OR ALTER VIEW dbo.vCar AS
-----A 20 legolcsobb mÈg nem eladott auto tulajdonsagai:
+----A 20 legolcsobb m√©g nem eladott auto tulajdonsagai:
 SELECT top 20
  CarBrand.Brand, CarModel.Model, [Note], [YearofManufacture], [Price],
    [Driveline], [Hybrid], [Fuel], [Transmission], [Climate], [NoPreviousOwner], [FuelInfoCity], [FuelInfoHighway], [Km]
@@ -1055,11 +1055,11 @@ BEGIN TRAN
    INSERT INTO Invoice (ClientID,InvoiceDate,ShipDate,EmployeeID) OUTPUT INSERTED.InvoiceID  INTO @T  VALUES   (  @ClientID, @InvoiceDate, @ShipDate, @EmployeeID)
    INSERT INTO InvoiceDetail(InvoiceID,CarID,Unit,Discount,VATID,DictPaymentMode,DictStat)  VALUES   (   (select t from @t),@CarID, @Unit, @Discount, @VATID,@DictPaymentMode,@DictStat) 
 COMMIT TRAN
-  insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','INSERT',1,'Sikerult felvenni az adatokat a t·bl·ba')
+  insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','INSERT',1,'Sikerult felvenni az adatokat a t√°bl√°ba')
 END TRY
 BEGIN CATCH
 	ROLLBACK TRAN 
-    insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','INSERT',0,'Nem sikerult felvenni az adatokat a t·bl·ba')
+    insert [Log] (TableName,[Action],[status], [Description]) values ('Invoice','INSERT',0,'Nem sikerult felvenni az adatokat a t√°bl√°ba')
 END CATCH
 END 
 
