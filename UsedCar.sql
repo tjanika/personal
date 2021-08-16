@@ -100,7 +100,9 @@ USE [master] DROP LOGIN sjulcsa
 USE [master] DROP LOGIN bmarcellne
 USE [master] DROP LOGIN szandor
 
-
+CREATE ROLE [Mindentolvas]
+CREATE ROLE [Mindentir]
+CREATE ROLE [Isten]
 USE [master] CREATE LOGIN 	vdavid	    WITH PASSWORD='Password', DEFAULT_DATABASE=UsedCar, CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF USE UsedCar CREATE USER 	vdavid	FOR LOGIN 	vdavid	ALTER ROLE [db_datareader] ADD MEMBER 	vdavid
 USE [master] CREATE LOGIN 	zabraham	WITH PASSWORD='Password', DEFAULT_DATABASE=UsedCar, CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF USE UsedCar CREATE USER 	zabraham	FOR LOGIN 	zabraham	ALTER ROLE [db_datareader] ADD MEMBER 	zabraham
 USE [master] CREATE LOGIN 	fdrafael	WITH PASSWORD='Password', DEFAULT_DATABASE=UsedCar, CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF USE UsedCar CREATE USER 	fdrafael	FOR LOGIN 	fdrafael	ALTER ROLE [db_datareader] ADD MEMBER 	fdrafael
